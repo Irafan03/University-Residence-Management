@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->string('numero')->unique();
+            $table->enum('type', ['individuelle', 'double']);
+            $table->integer('capacite')->default(1);
+            $table->decimal('prix', 8, 2);
+            $table->boolean('statut')->default(false); 
             $table->timestamps();
         });
     }
